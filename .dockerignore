@@ -1,0 +1,9 @@
+data
+**/__pycache__
+backend/rust/atlas-graph/target
+frontend/node_modules
+frontend/dist
+examples/worlds
+tests/results
+.venv
+.env

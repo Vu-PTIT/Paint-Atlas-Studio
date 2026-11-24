@@ -1,0 +1,36 @@
+{
+  "name": "paint-atlas-studio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --config vite.config.ts",
+    "build:studio": "vite build --config vite.config.ts",
+    "typecheck": "tsc --noEmit",
+    "build:samples": "node tools/build-samples.mjs",
+    "build": "npm run typecheck && npm run build:studio && npm run build:samples",
+    "types:api": "openapi-typescript ../shared/openapi.json -o studio/src/api/generated.ts"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "0.19.3",
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "lucide-react": "0.468.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "three": "0.182.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/three": "0.182.0",
+    "esbuild": "0.27.4",
+    "openapi-typescript": "7.10.1",
+    "typescript": "5.9.3",
+    "vite": "7.2.2"
+  }
+}

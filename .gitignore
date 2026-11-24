@@ -1,0 +1,27 @@
+# Môi trường ảo & Thư viện
+/.venv/
+frontend/node_modules/
+
+# Dữ liệu cục bộ & Tệp bí mật
+/data/
+.env
+
+# Cache & Build artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+frontend/dist/
+backend/rust/atlas-graph/target/
+
+# Kết quả test (ĐỔI từ "tests/" thành "tests/results/")
+tests/
+
+# (Tùy chọn) Bỏ qua file HTML mẫu đã bundle nếu muốn repo nhẹ:
+# examples/worlds/
+
+# Tệp rác hệ thống & IDE
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+*.log

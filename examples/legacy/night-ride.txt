@@ -1,0 +1,29 @@
+Create an interactive 3D scene playable directly in a web browser. The project must be contained within a single HTML file and utilize WebGL2; do not use any external image assets or 3D models.
+
+【Rendering Technique】
+- The entire scene is composed of hundreds of thousands to millions of "oil paint strokes." Each stroke is an *instanced quad* fixed to a specific position and orientation within the 3D world. A GLSL shader is used to render the texture of the bristles and the lighting effects characteristic of *impasto* (thick paint application). This is a direct rendering approach, not a post-processing filter applied to a pre-rendered 3D scene.
+- Each object features two sets of paint colors—one for highlights and one for shadows—selected based on the intensity of incident light, with an added touch of random color variation.
+- Stroke sizes are constrained by defined minimum and maximum limits. As strokes move into the distance, their density decreases while their individual size increases; they should gradually shrink and fade out of view rather than popping in or out abruptly.
+- The number of bristles per stroke remains constant. To prevent flickering when the camera rotates, the spacing between strokes increases with distance.
+
+【Visual Style】
+A night scene inspired by Van Gogh’s *The Starry Night*: the sky features massive, swirling vortices of cobalt blue, ultramarine, and cyan-green, with brushstrokes flowing along the currents. A golden-orange full moon is surrounded by concentric halos, accompanied by radiant, golden-yellow starbursts. Objects illuminated by moonlight take on a bluish hue with reduced saturation, while areas touched by artificial light appear in warm tones. 【World】
+- Sunflower fields with circular paths; the flowers droop at night and face the same direction.
+- Rotating windmills and cottages with illuminated windows.
+- A village featuring a church spire, cypress trees, wheat fields, and roads.
+- A river with reflections, a stone bridge, and a waterfall cascading down a rock face.
+- Three layers of mountain ranges, each with a solid silhouette base; the furthest layer features snow-capped peaks.
+- Fine grass is generated in real-time around the camera view.
+
+【Protagonist & Controls】
+- A knight—wearing a blue cloak and a wide-brimmed hat, and carrying a lantern—rides a brown horse (complete with saddle, reins, and gait animations).
+- PC: WASD for movement, Shift to sprint, Spacebar to jump; drag with the mouse to rotate the view, use the scroll wheel to zoom.
+- Mobile: Virtual joystick (bottom-left), jump button (bottom-right); drag to rotate the view, pinch-to-zoom. Rendered at native screen resolution, with a slight reduction in the number of brushstrokes.
+- Obstacles such as fences, stone walls, and fallen logs can be jumped over; the system defaults to auto-following the path and automatically triggering jumps.
+- Physics engine: Rapier (with a fallback to a built-in, simplified physics system if loading fails).
+
+【Miscellaneous】
+- Resolution automatically scales down if the frame rate drops.
+- Includes a "panoramic tour" mode with automated camera movement.
+
+Once completed, please use a headless browser to render a few sample frames for verification, then let me know which components have been verified and which have not.

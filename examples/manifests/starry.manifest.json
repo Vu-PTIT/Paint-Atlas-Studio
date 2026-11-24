@@ -1,0 +1,1436 @@
+{
+ "backend": "WebGL2",
+ "physics": "Rapier",
+ "strokes": 475774,
+ "manifest": [
+  {
+   "id": "house-1",
+   "name": "Nhà ven đường 1",
+   "kind": "Kiến trúc",
+   "position": [
+    -17.3,
+    1.1618696930348245,
+    -29
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.647,
+     0
+    ],
+    "size": [
+     4.2,
+     3.294,
+     3.38
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-2",
+   "name": "Nhà ven đường 2",
+   "kind": "Kiến trúc",
+   "position": [
+    -14.6,
+    0.9042670751185264,
+    -37.1
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.8099999999999998,
+     0
+    ],
+    "size": [
+     4.9,
+     3.6199999999999997,
+     4.14
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-3",
+   "name": "Nhà ven đường 3",
+   "kind": "Kiến trúc",
+   "position": [
+    -2.72,
+    0.06476259482905733,
+    -25.9
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.8530000000000002,
+     0
+    ],
+    "size": [
+     4.48,
+     3.7060000000000004,
+     4.1
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-4",
+   "name": "Nhà ven đường 4",
+   "kind": "Kiến trúc",
+   "position": [
+    2.9,
+    0.03098381102291259,
+    -32.5
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.598,
+     0
+    ],
+    "size": [
+     4.08,
+     3.196,
+     3.87
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-5",
+   "name": "Nhà ven đường 5",
+   "kind": "Kiến trúc",
+   "position": [
+    7.71,
+    -0.3367025613800334,
+    -26.1
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.66,
+     0
+    ],
+    "size": [
+     3.83,
+     3.32,
+     3.2
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-6",
+   "name": "Nhà ven đường 6",
+   "kind": "Kiến trúc",
+   "position": [
+    -2.9,
+    0.656274294316368,
+    -39.6
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.762,
+     0
+    ],
+    "size": [
+     4.13,
+     3.524,
+     3.8
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-7",
+   "name": "Nhà ven đường 7",
+   "kind": "Kiến trúc",
+   "position": [
+    -23.7,
+    1.411583673835434,
+    -39.1
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.575,
+     0
+    ],
+    "size": [
+     3.71,
+     3.15,
+     3.15
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-8",
+   "name": "Nhà ven đường 8",
+   "kind": "Kiến trúc",
+   "position": [
+    36.1,
+    0.806564579990213,
+    -27.7
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.901,
+     0
+    ],
+    "size": [
+     4.31,
+     3.802,
+     3.8
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-9",
+   "name": "Nhà ven đường 9",
+   "kind": "Kiến trúc",
+   "position": [
+    39.2,
+    0.39817137594399155,
+    -15.1
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.859,
+     0
+    ],
+    "size": [
+     4.78,
+     3.718,
+     3.9
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "house-10",
+   "name": "Nhà ven đường 10",
+   "kind": "Kiến trúc",
+   "position": [
+    33.7,
+    0.8082933321171701,
+    -31.9
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     1.52,
+     0
+    ],
+    "size": [
+     3.55,
+     3.04,
+     3.6
+    ]
+   },
+   "fields": {
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#ffd484"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.92,
+     "min": 0,
+     "max": 1,
+     "step": 0.02
+    }
+   }
+  },
+  {
+   "id": "church",
+   "name": "Nhà thờ làng",
+   "kind": "Kiến trúc",
+   "position": [
+    -6.65,
+    0.6247016523995947,
+    -34.1
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     4,
+     0
+    ],
+    "size": [
+     6,
+     8,
+     6.2
+    ]
+   }
+  },
+  {
+   "id": "mill-0",
+   "name": "Cối xay 1",
+   "kind": "Kiến trúc",
+   "position": [
+    13.3,
+    -0.05663776382759855,
+    -24.2
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     2.703,
+     0
+    ],
+    "size": [
+     2.295,
+     5.406,
+     2.295
+    ]
+   },
+   "fields": {
+    "speed": {
+     "kind": "number",
+     "label": "Tốc độ cánh",
+     "value": 0.4,
+     "min": -2,
+     "max": 2,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "mill-1",
+   "name": "Cối xay 2",
+   "kind": "Kiến trúc",
+   "position": [
+    -29.5,
+    1.6013439816801238,
+    -36.5
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     2.067,
+     0
+    ],
+    "size": [
+     1.7550000000000001,
+     4.134,
+     1.7550000000000001
+    ]
+   },
+   "fields": {
+    "speed": {
+     "kind": "number",
+     "label": "Tốc độ cánh",
+     "value": -0.37,
+     "min": -2,
+     "max": 2,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "mill-2",
+   "name": "Cối xay 3",
+   "kind": "Kiến trúc",
+   "position": [
+    40.6,
+    2.3985936522913622,
+    -49.1
+   ],
+   "solid": true,
+   "box": {
+    "center": [
+     0,
+     2.279,
+     0
+    ],
+    "size": [
+     1.935,
+     4.558,
+     1.935
+    ]
+   },
+   "fields": {
+    "speed": {
+     "kind": "number",
+     "label": "Tốc độ cánh",
+     "value": 0.4,
+     "min": -2,
+     "max": 2,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "cypress-1",
+   "name": "Bách 1",
+   "kind": "Cây",
+   "position": [
+    -9.2,
+    0.4673147991030153,
+    -3.2
+   ],
+   "box": {
+    "center": [
+     0,
+     5.25,
+     0
+    ],
+    "size": [
+     3.26,
+     10.5,
+     3.26
+    ]
+   }
+  },
+  {
+   "id": "cypress-2",
+   "name": "Bách 2",
+   "kind": "Cây",
+   "position": [
+    -12,
+    0.3336527555547093,
+    -7
+   ],
+   "box": {
+    "center": [
+     0,
+     3.85,
+     0
+    ],
+    "size": [
+     2.36,
+     7.7,
+     2.36
+    ]
+   }
+  },
+  {
+   "id": "cypress-3",
+   "name": "Bách 3",
+   "kind": "Cây",
+   "position": [
+    -16.1,
+    0.6796453696631404,
+    -9.9
+   ],
+   "box": {
+    "center": [
+     0,
+     3.05,
+     0
+    ],
+    "size": [
+     1.96,
+     6.1,
+     1.96
+    ]
+   }
+  },
+  {
+   "id": "cypress-4",
+   "name": "Bách 4",
+   "kind": "Cây",
+   "position": [
+    -20.4,
+    1.3478176622360007,
+    -23.7
+   ],
+   "box": {
+    "center": [
+     0,
+     4.15,
+     0
+    ],
+    "size": [
+     2.68,
+     8.3,
+     2.68
+    ]
+   }
+  },
+  {
+   "id": "cypress-5",
+   "name": "Bách 5",
+   "kind": "Cây",
+   "position": [
+    -20.4,
+    1.20510253266018,
+    -30.1
+   ],
+   "box": {
+    "center": [
+     0,
+     3.3,
+     0
+    ],
+    "size": [
+     2.58,
+     6.6,
+     2.58
+    ]
+   }
+  },
+  {
+   "id": "cypress-6",
+   "name": "Bách 6",
+   "kind": "Cây",
+   "position": [
+    -10.9,
+    0.7845254210166157,
+    -40.3
+   ],
+   "box": {
+    "center": [
+     0,
+     3.8,
+     0
+    ],
+    "size": [
+     2.08,
+     7.6,
+     2.08
+    ]
+   }
+  },
+  {
+   "id": "cypress-7",
+   "name": "Bách 7",
+   "kind": "Cây",
+   "position": [
+    -3.8,
+    0.2476019915585792,
+    -33.4
+   ],
+   "box": {
+    "center": [
+     0,
+     3.1,
+     0
+    ],
+    "size": [
+     2.26,
+     6.2,
+     2.26
+    ]
+   }
+  },
+  {
+   "id": "cypress-8",
+   "name": "Bách 8",
+   "kind": "Cây",
+   "position": [
+    3.9,
+    0.16809710679042422,
+    -37.5
+   ],
+   "box": {
+    "center": [
+     0,
+     3.85,
+     0
+    ],
+    "size": [
+     2.6,
+     7.7,
+     2.6
+    ]
+   }
+  },
+  {
+   "id": "cypress-9",
+   "name": "Bách 9",
+   "kind": "Cây",
+   "position": [
+    11.16,
+    -0.21297638909331384,
+    -32.3
+   ],
+   "box": {
+    "center": [
+     0,
+     3.055,
+     0
+    ],
+    "size": [
+     2.2,
+     6.11,
+     2.2
+    ]
+   }
+  },
+  {
+   "id": "cypress-10",
+   "name": "Bách 10",
+   "kind": "Cây",
+   "position": [
+    17.1,
+    -1.67,
+    -33.8
+   ],
+   "box": {
+    "center": [
+     0,
+     2.2,
+     0
+    ],
+    "size": [
+     1.72,
+     4.4,
+     1.72
+    ]
+   }
+  },
+  {
+   "id": "cypress-11",
+   "name": "Bách 11",
+   "kind": "Cây",
+   "position": [
+    21.5,
+    0.22950037217035146,
+    -51.1
+   ],
+   "box": {
+    "center": [
+     0,
+     3.965,
+     0
+    ],
+    "size": [
+     2.42,
+     7.93,
+     2.42
+    ]
+   }
+  },
+  {
+   "id": "cypress-12",
+   "name": "Bách 12",
+   "kind": "Cây",
+   "position": [
+    41.5,
+    0.6780285995412845,
+    -23.7
+   ],
+   "box": {
+    "center": [
+     0,
+     4.25,
+     0
+    ],
+    "size": [
+     2.64,
+     8.5,
+     2.64
+    ]
+   }
+  },
+  {
+   "id": "cypress-13",
+   "name": "Bách 13",
+   "kind": "Cây",
+   "position": [
+    40.1,
+    1.754686231902724,
+    -36.6
+   ],
+   "box": {
+    "center": [
+     0,
+     3.05,
+     0
+    ],
+    "size": [
+     2.4,
+     6.1,
+     2.4
+    ]
+   }
+  },
+  {
+   "id": "cypress-14",
+   "name": "Bách 14",
+   "kind": "Cây",
+   "position": [
+    -33.2,
+    1.709049343582441,
+    -16
+   ],
+   "box": {
+    "center": [
+     0,
+     2.95,
+     0
+    ],
+    "size": [
+     2.6,
+     5.9,
+     2.6
+    ]
+   }
+  },
+  {
+   "id": "barrier-0",
+   "name": "Thân cây đổ",
+   "kind": "Chướng ngại",
+   "solid": true,
+   "jumpable": true,
+   "position": [
+    -2.5105882354667113,
+    0.5589575083177682,
+    4.631034680212583
+   ],
+   "yaw": 158.93056086268876,
+   "box": {
+    "center": [
+     0,
+     0.265,
+     0
+    ],
+    "size": [
+     3.32,
+     0.53,
+     0.44
+    ]
+   }
+  },
+  {
+   "id": "barrier-1",
+   "name": "Hàng rào",
+   "kind": "Chướng ngại",
+   "solid": true,
+   "jumpable": true,
+   "position": [
+    34.424059853604675,
+    1.504298984328074,
+    -42.87976326580623
+   ],
+   "yaw": -108.60242035583597,
+   "box": {
+    "center": [
+     0,
+     0.42,
+     0
+    ],
+    "size": [
+     3.74,
+     0.84,
+     0.246
+    ]
+   }
+  },
+  {
+   "id": "barrier-2",
+   "name": "Tường đá",
+   "kind": "Chướng ngại",
+   "solid": true,
+   "jumpable": true,
+   "position": [
+    -24.98528109654503,
+    1.5632426606317082,
+    -19.805390516268538
+   ],
+   "yaw": -17.69684525450511,
+   "box": {
+    "center": [
+     0,
+     0.36,
+     0
+    ],
+    "size": [
+     3.52,
+     0.72,
+     0.5
+    ]
+   }
+  },
+  {
+   "id": "river",
+   "name": "Dòng sông",
+   "kind": "Nước",
+   "position": [
+    19.07076668415764,
+    -0.58,
+    -28
+   ],
+   "movable": false,
+   "box": {
+    "center": [
+     0,
+     0,
+     0
+    ],
+    "size": [
+     6,
+     0.35,
+     12
+    ]
+   },
+   "fields": {
+    "flow": {
+     "kind": "number",
+     "label": "Tốc độ nước",
+     "min": 0,
+     "max": 4,
+     "step": 0.1,
+     "value": 1
+    }
+   }
+  },
+  {
+   "id": "@scene-palette",
+   "name": "Bảng màu cảnh",
+   "movable": false,
+   "fields": {
+    "sky": {
+     "kind": "color",
+     "label": "Tông màu chung",
+     "value": "#142141"
+    },
+    "water": {
+     "kind": "color",
+     "label": "Tông màu chung",
+     "value": "#315388"
+    },
+    "architecture": {
+     "kind": "color",
+     "label": "Tông màu chung",
+     "value": "#e5ad57"
+    },
+    "sky.upper-sky": {
+     "kind": "color",
+     "label": "Nền trời trên cao",
+     "value": "#080e28"
+    },
+    "sky.middle-sky": {
+     "kind": "color",
+     "label": "Nền trời giữa",
+     "value": "#101e49"
+    },
+    "sky.horizon": {
+     "kind": "color",
+     "label": "Ánh chân trời",
+     "value": "#263e65"
+    },
+    "sky.cobalt": {
+     "kind": "color",
+     "label": "Nét xanh cobalt",
+     "value": "#3778ae"
+    },
+    "sky.currents": {
+     "kind": "color",
+     "label": "Vệt xoáy",
+     "value": "#6aaeb9"
+    },
+    "sky.starlight": {
+     "kind": "color",
+     "label": "Ánh sao",
+     "value": "#fff1ae"
+    },
+    "sky.moon": {
+     "kind": "color",
+     "label": "Mặt trăng",
+     "value": "#ffdb79"
+    },
+    "water.river-bed": {
+     "kind": "color",
+     "label": "Nền lòng sông",
+     "value": "#285f8c"
+    },
+    "water.river-ripples": {
+     "kind": "color",
+     "label": "Nét gợn nước",
+     "value": "#5194b2"
+    },
+    "water.foam": {
+     "kind": "color",
+     "label": "Bọt ven bờ",
+     "value": "#8bb5c1"
+    },
+    "water.gold-reflection": {
+     "kind": "color",
+     "label": "Bóng đèn vàng",
+     "value": "#e7ad50"
+    },
+    "architecture.walls": {
+     "kind": "color",
+     "label": "Tường nhà",
+     "value": "#898278"
+    },
+    "architecture.roofs": {
+     "kind": "color",
+     "label": "Mái ngói",
+     "value": "#4f576d"
+    },
+    "architecture.stone": {
+     "kind": "color",
+     "label": "Đá xây",
+     "value": "#77828a"
+    },
+    "architecture.timber": {
+     "kind": "color",
+     "label": "Gỗ cửa và cối xay",
+     "value": "#695350"
+    },
+    "architecture.windows": {
+     "kind": "color",
+     "label": "Ánh cửa sổ",
+     "value": "#ffd484"
+    },
+    "architecture.sails": {
+     "kind": "color",
+     "label": "Vải cánh quạt",
+     "value": "#bfc2a8"
+    },
+    "water.falls": {
+     "kind": "color",
+     "label": "Dòng thác",
+     "value": "#5896ae"
+    },
+    "water.spray": {
+     "kind": "color",
+     "label": "Bọt thác",
+     "value": "#cdd9d5"
+    }
+   }
+  }
+ ],
+ "initial": {
+  "house-1": {
+   "position": [
+    -17.3,
+    1.1618696930348245,
+    -29
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-2": {
+   "position": [
+    -14.6,
+    0.9042670751185264,
+    -37.1
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-3": {
+   "position": [
+    -2.72,
+    0.06476259482905733,
+    -25.9
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-4": {
+   "position": [
+    2.9,
+    0.03098381102291259,
+    -32.5
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-5": {
+   "position": [
+    7.71,
+    -0.3367025613800334,
+    -26.1
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-6": {
+   "position": [
+    -2.9,
+    0.656274294316368,
+    -39.6
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-7": {
+   "position": [
+    -23.7,
+    1.411583673835434,
+    -39.1
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-8": {
+   "position": [
+    36.1,
+    0.806564579990213,
+    -27.7
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-9": {
+   "position": [
+    39.2,
+    0.39817137594399155,
+    -15.1
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "house-10": {
+   "position": [
+    33.7,
+    0.8082933321171701,
+    -31.9
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "window": "#ffd484",
+    "light": 0.92
+   }
+  },
+  "church": {
+   "position": [
+    -6.65,
+    0.6247016523995947,
+    -34.1
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "mill-0": {
+   "position": [
+    13.3,
+    -0.05663776382759855,
+    -24.2
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "speed": 0.4
+   }
+  },
+  "mill-1": {
+   "position": [
+    -29.5,
+    1.6013439816801238,
+    -36.5
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "speed": -0.37
+   }
+  },
+  "mill-2": {
+   "position": [
+    40.6,
+    2.3985936522913622,
+    -49.1
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "speed": 0.4
+   }
+  },
+  "cypress-1": {
+   "position": [
+    -9.2,
+    0.4673147991030153,
+    -3.2
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-2": {
+   "position": [
+    -12,
+    0.3336527555547093,
+    -7
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-3": {
+   "position": [
+    -16.1,
+    0.6796453696631404,
+    -9.9
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-4": {
+   "position": [
+    -20.4,
+    1.3478176622360007,
+    -23.7
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-5": {
+   "position": [
+    -20.4,
+    1.20510253266018,
+    -30.1
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-6": {
+   "position": [
+    -10.9,
+    0.7845254210166157,
+    -40.3
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-7": {
+   "position": [
+    -3.8,
+    0.2476019915585792,
+    -33.4
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-8": {
+   "position": [
+    3.9,
+    0.16809710679042422,
+    -37.5
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-9": {
+   "position": [
+    11.16,
+    -0.21297638909331384,
+    -32.3
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-10": {
+   "position": [
+    17.1,
+    -1.67,
+    -33.8
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-11": {
+   "position": [
+    21.5,
+    0.22950037217035146,
+    -51.1
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-12": {
+   "position": [
+    41.5,
+    0.6780285995412845,
+    -23.7
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-13": {
+   "position": [
+    40.1,
+    1.754686231902724,
+    -36.6
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "cypress-14": {
+   "position": [
+    -33.2,
+    1.709049343582441,
+    -16
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "barrier-0": {
+   "position": [
+    -2.5105882354667113,
+    0.5589575083177682,
+    4.631034680212583
+   ],
+   "yaw": 158.93056086268876,
+   "scale": 1,
+   "values": {}
+  },
+  "barrier-1": {
+   "position": [
+    34.424059853604675,
+    1.504298984328074,
+    -42.87976326580623
+   ],
+   "yaw": -108.60242035583597,
+   "scale": 1,
+   "values": {}
+  },
+  "barrier-2": {
+   "position": [
+    -24.98528109654503,
+    1.5632426606317082,
+    -19.805390516268538
+   ],
+   "yaw": -17.69684525450511,
+   "scale": 1,
+   "values": {}
+  },
+  "river": {
+   "position": [
+    19.07076668415764,
+    -0.58,
+    -28
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "flow": 1
+   }
+  },
+  "@scene-palette": {
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "sky": "#142141",
+    "water": "#315388",
+    "architecture": "#e5ad57",
+    "sky.upper-sky": "#080e28",
+    "sky.middle-sky": "#101e49",
+    "sky.horizon": "#263e65",
+    "sky.cobalt": "#3778ae",
+    "sky.currents": "#6aaeb9",
+    "sky.starlight": "#fff1ae",
+    "sky.moon": "#ffdb79",
+    "water.river-bed": "#285f8c",
+    "water.river-ripples": "#5194b2",
+    "water.foam": "#8bb5c1",
+    "water.gold-reflection": "#e7ad50",
+    "architecture.walls": "#898278",
+    "architecture.roofs": "#4f576d",
+    "architecture.stone": "#77828a",
+    "architecture.timber": "#695350",
+    "architecture.windows": "#ffd484",
+    "architecture.sails": "#bfc2a8",
+    "water.falls": "#5896ae",
+    "water.spray": "#cdd9d5"
+   }
+  }
+ },
+ "subject": false
+}

@@ -1,0 +1,1012 @@
+{
+ "backend": "WebGL2",
+ "physics": "Rapier",
+ "strokes": 239096,
+ "manifest": [
+  {
+   "id": "river",
+   "kind": "Nước",
+   "name": "Sông Hoài",
+   "movable": false,
+   "position": [
+    0,
+    -0.6,
+    4.2
+   ],
+   "box": {
+    "center": [
+     0,
+     0,
+     0
+    ],
+    "size": [
+     58,
+     0.2,
+     9.2
+    ]
+   },
+   "fields": {
+    "flow": {
+     "kind": "number",
+     "label": "Tốc độ dòng nước",
+     "value": 0.92,
+     "min": 0,
+     "max": 4,
+     "step": 0.1
+    },
+    "color": {
+     "kind": "color",
+     "label": "Màu mặt nước",
+     "value": "#32675e"
+    }
+   }
+  },
+  {
+   "id": "house-1",
+   "name": "Nhà phố 1",
+   "kind": "Kiến trúc",
+   "position": [
+    -25,
+    0.18,
+    -7.25
+   ],
+   "box": {
+    "center": [
+     0,
+     1.9020000000000001,
+     0
+    ],
+    "size": [
+     4.6,
+     3.8040000000000003,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#edaa59"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-2",
+   "name": "Nhà phố 2",
+   "kind": "Kiến trúc",
+   "position": [
+    -20,
+    0.18,
+    -7.42
+   ],
+   "box": {
+    "center": [
+     0,
+     2.477,
+     0
+    ],
+    "size": [
+     4.9,
+     4.954,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#c98756"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-3",
+   "name": "Nhà phố 3",
+   "kind": "Kiến trúc",
+   "position": [
+    -14.8,
+    0.18,
+    -7.59
+   ],
+   "box": {
+    "center": [
+     0,
+     2.077,
+     0
+    ],
+    "size": [
+     5.1,
+     4.154,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#e4b26d"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-4",
+   "name": "Nhà phố 4",
+   "kind": "Kiến trúc",
+   "position": [
+    -9.3,
+    0.18,
+    -7.25
+   ],
+   "box": {
+    "center": [
+     0,
+     2.502,
+     0
+    ],
+    "size": [
+     5.2,
+     5.004,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#c39263"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-5",
+   "name": "Nhà phố 5",
+   "kind": "Kiến trúc",
+   "position": [
+    -3.9,
+    0.18,
+    -7.42
+   ],
+   "box": {
+    "center": [
+     0,
+     2.052,
+     0
+    ],
+    "size": [
+     5,
+     4.104,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#e8be74"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-6",
+   "name": "Nhà phố 6",
+   "kind": "Kiến trúc",
+   "position": [
+    1.4,
+    0.18,
+    -7.59
+   ],
+   "box": {
+    "center": [
+     0,
+     2.627,
+     0
+    ],
+    "size": [
+     5.35,
+     5.254,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#edaa59"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-7",
+   "name": "Nhà phố 7",
+   "kind": "Kiến trúc",
+   "position": [
+    7,
+    0.18,
+    -7.25
+   ],
+   "box": {
+    "center": [
+     0,
+     2.102,
+     0
+    ],
+    "size": [
+     5.45,
+     4.204,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#c98756"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-8",
+   "name": "Nhà phố 8",
+   "kind": "Kiến trúc",
+   "position": [
+    12.5,
+    0.18,
+    -7.42
+   ],
+   "box": {
+    "center": [
+     0,
+     2.412,
+     0
+    ],
+    "size": [
+     5.3,
+     4.824,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#e4b26d"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-9",
+   "name": "Nhà phố 9",
+   "kind": "Kiến trúc",
+   "position": [
+    18,
+    0.18,
+    -7.59
+   ],
+   "box": {
+    "center": [
+     0,
+     2.092,
+     0
+    ],
+    "size": [
+     5.25,
+     4.184,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#c39263"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-10",
+   "name": "Nhà phố 10",
+   "kind": "Kiến trúc",
+   "position": [
+    23.6,
+    0.18,
+    -7.25
+   ],
+   "box": {
+    "center": [
+     0,
+     2.4019999999999997,
+     0
+    ],
+    "size": [
+     5.45,
+     4.803999999999999,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#e8be74"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "house-11",
+   "name": "Nhà phố 11",
+   "kind": "Kiến trúc",
+   "position": [
+    29.3,
+    0.18,
+    -7.42
+   ],
+   "box": {
+    "center": [
+     0,
+     2.027,
+     0
+    ],
+    "size": [
+     5,
+     4.054,
+     3.9
+    ]
+   },
+   "solid": true,
+   "fields": {
+    "wall": {
+     "kind": "color",
+     "label": "Màu vôi tường",
+     "value": "#edaa59"
+    },
+    "window": {
+     "kind": "color",
+     "label": "Màu cửa sổ",
+     "value": "#edaa59"
+    },
+    "light": {
+     "kind": "number",
+     "label": "Độ sáng đèn",
+     "value": 0.9,
+     "min": 0,
+     "max": 1,
+     "step": 0.05
+    }
+   }
+  },
+  {
+   "id": "bridge",
+   "name": "Cầu gỗ",
+   "kind": "Kiến trúc",
+   "movable": false,
+   "position": [
+    -9,
+    0,
+    0
+   ],
+   "box": {
+    "center": [
+     0,
+     0.7,
+     4.1
+    ],
+    "size": [
+     3.8,
+     1.6,
+     10.7
+    ]
+   }
+  },
+  {
+   "id": "basket-0",
+   "name": "Thuyền thúng 1",
+   "kind": "Thuyền",
+   "position": [
+    -3.2,
+    -0.59,
+    1.1
+   ],
+   "yaw": 14,
+   "scale": 1.06,
+   "box": {
+    "center": [
+     0,
+     0.36,
+     0
+    ],
+    "size": [
+     2.65,
+     0.95,
+     2.65
+    ]
+   },
+   "fields": {
+    "reed": {
+     "kind": "color",
+     "label": "Màu nan tre",
+     "value": "#c59764"
+    }
+   }
+  },
+  {
+   "id": "basket-1",
+   "name": "Thuyền thúng 2",
+   "kind": "Thuyền",
+   "position": [
+    6.2,
+    -0.59,
+    1.72
+   ],
+   "yaw": 33,
+   "scale": 0.83,
+   "box": {
+    "center": [
+     0,
+     0.36,
+     0
+    ],
+    "size": [
+     2.65,
+     0.95,
+     2.65
+    ]
+   },
+   "fields": {
+    "reed": {
+     "kind": "color",
+     "label": "Màu nan tre",
+     "value": "#c59764"
+    }
+   }
+  },
+  {
+   "id": "basket-2",
+   "name": "Thuyền thúng 3",
+   "kind": "Thuyền",
+   "position": [
+    12.7,
+    -0.59,
+    6.8
+   ],
+   "yaw": 52,
+   "scale": 1,
+   "box": {
+    "center": [
+     0,
+     0.36,
+     0
+    ],
+    "size": [
+     2.65,
+     0.95,
+     2.65
+    ]
+   },
+   "fields": {
+    "reed": {
+     "kind": "color",
+     "label": "Màu nan tre",
+     "value": "#c59764"
+    }
+   }
+  },
+  {
+   "id": "@scene-palette",
+   "name": "Bảng màu cảnh",
+   "movable": false,
+   "fields": {
+    "sky": {
+     "kind": "color",
+     "label": "Tông màu chung",
+     "value": "#103332"
+    },
+    "water": {
+     "kind": "color",
+     "label": "Tông màu chung",
+     "value": "#32675e"
+    },
+    "architecture": {
+     "kind": "color",
+     "label": "Tông màu chung",
+     "value": "#edaa59"
+    },
+    "sky.background": {
+     "kind": "color",
+     "label": "Nền trời",
+     "value": "#103332"
+    },
+    "sky.clouds": {
+     "kind": "color",
+     "label": "Nét mây",
+     "value": "#32675e"
+    },
+    "sky.highlights": {
+     "kind": "color",
+     "label": "Vệt sáng",
+     "value": "#ab9977"
+    },
+    "sky.moon": {
+     "kind": "color",
+     "label": "Mặt trăng",
+     "value": "#f4dbab"
+    },
+    "water.surface": {
+     "kind": "color",
+     "label": "Nền mặt nước",
+     "value": "#32675e"
+    },
+    "water.ripples": {
+     "kind": "color",
+     "label": "Nét gợn nước",
+     "value": "#32675e"
+    },
+    "water.moonlight": {
+     "kind": "color",
+     "label": "Bóng trăng",
+     "value": "#b8a580"
+    },
+    "water.gold-reflection": {
+     "kind": "color",
+     "label": "Bóng đèn vàng",
+     "value": "#edaa59"
+    },
+    "water.red-reflection": {
+     "kind": "color",
+     "label": "Bóng đèn đỏ",
+     "value": "#aa352a"
+    },
+    "architecture.walls": {
+     "kind": "color",
+     "label": "Tường nhà",
+     "value": "#edaa59"
+    },
+    "architecture.roofs": {
+     "kind": "color",
+     "label": "Mái ngói",
+     "value": "#795d4c"
+    },
+    "architecture.trim": {
+     "kind": "color",
+     "label": "Viền mái",
+     "value": "#f4dbab"
+    },
+    "architecture.timber": {
+     "kind": "color",
+     "label": "Gỗ cầu và cửa",
+     "value": "#976445"
+    },
+    "architecture.stone": {
+     "kind": "color",
+     "label": "Đá xây",
+     "value": "#b39279"
+    },
+    "architecture.quay-trim": {
+     "kind": "color",
+     "label": "Viền bờ sông",
+     "value": "#f4dbab"
+    },
+    "architecture.windows": {
+     "kind": "color",
+     "label": "Ánh cửa sổ",
+     "value": "#edaa59"
+    },
+    "architecture.mullions": {
+     "kind": "color",
+     "label": "Thanh cửa xanh",
+     "value": "#32675e"
+    },
+    "architecture.lantern-red": {
+     "kind": "color",
+     "label": "Đèn lồng đỏ",
+     "value": "#aa352a"
+    },
+    "architecture.lantern-gold": {
+     "kind": "color",
+     "label": "Đèn lồng vàng",
+     "value": "#edaa59"
+    },
+    "architecture.lantern-cream": {
+     "kind": "color",
+     "label": "Đèn lồng kem",
+     "value": "#f4dbab"
+    },
+    "architecture.lantern-orange": {
+     "kind": "color",
+     "label": "Đèn lồng cam",
+     "value": "#da763e"
+    }
+   }
+  }
+ ],
+ "initial": {
+  "river": {
+   "position": [
+    0,
+    -0.6,
+    4.2
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "flow": 0.92,
+    "color": "#32675e"
+   }
+  },
+  "house-1": {
+   "position": [
+    -25,
+    0.18,
+    -7.25
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#edaa59",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-2": {
+   "position": [
+    -20,
+    0.18,
+    -7.42
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#c98756",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-3": {
+   "position": [
+    -14.8,
+    0.18,
+    -7.59
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#e4b26d",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-4": {
+   "position": [
+    -9.3,
+    0.18,
+    -7.25
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#c39263",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-5": {
+   "position": [
+    -3.9,
+    0.18,
+    -7.42
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#e8be74",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-6": {
+   "position": [
+    1.4,
+    0.18,
+    -7.59
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#edaa59",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-7": {
+   "position": [
+    7,
+    0.18,
+    -7.25
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#c98756",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-8": {
+   "position": [
+    12.5,
+    0.18,
+    -7.42
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#e4b26d",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-9": {
+   "position": [
+    18,
+    0.18,
+    -7.59
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#c39263",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-10": {
+   "position": [
+    23.6,
+    0.18,
+    -7.25
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#e8be74",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "house-11": {
+   "position": [
+    29.3,
+    0.18,
+    -7.42
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "wall": "#edaa59",
+    "window": "#edaa59",
+    "light": 0.9
+   }
+  },
+  "bridge": {
+   "position": [
+    -9,
+    0,
+    0
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {}
+  },
+  "basket-0": {
+   "position": [
+    -3.2,
+    -0.59,
+    1.1
+   ],
+   "yaw": 14,
+   "scale": 1.06,
+   "values": {
+    "reed": "#c59764"
+   }
+  },
+  "basket-1": {
+   "position": [
+    6.2,
+    -0.59,
+    1.72
+   ],
+   "yaw": 33,
+   "scale": 0.83,
+   "values": {
+    "reed": "#c59764"
+   }
+  },
+  "basket-2": {
+   "position": [
+    12.7,
+    -0.59,
+    6.8
+   ],
+   "yaw": 52,
+   "scale": 1,
+   "values": {
+    "reed": "#c59764"
+   }
+  },
+  "@scene-palette": {
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "yaw": 0,
+   "scale": 1,
+   "values": {
+    "sky": "#103332",
+    "water": "#32675e",
+    "architecture": "#edaa59",
+    "sky.background": "#103332",
+    "sky.clouds": "#32675e",
+    "sky.highlights": "#ab9977",
+    "sky.moon": "#f4dbab",
+    "water.surface": "#32675e",
+    "water.ripples": "#32675e",
+    "water.moonlight": "#b8a580",
+    "water.gold-reflection": "#edaa59",
+    "water.red-reflection": "#aa352a",
+    "architecture.walls": "#edaa59",
+    "architecture.roofs": "#795d4c",
+    "architecture.trim": "#f4dbab",
+    "architecture.timber": "#976445",
+    "architecture.stone": "#b39279",
+    "architecture.quay-trim": "#f4dbab",
+    "architecture.windows": "#edaa59",
+    "architecture.mullions": "#32675e",
+    "architecture.lantern-red": "#aa352a",
+    "architecture.lantern-gold": "#edaa59",
+    "architecture.lantern-cream": "#f4dbab",
+    "architecture.lantern-orange": "#da763e"
+   }
+  }
+ },
+ "subject": false
+}

@@ -1,0 +1,335 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paint Atlas · Bàn thử API</title>
+<style>
+*{box-sizing:border-box}body{font:16px/1.55 system-ui;color:#283635;background:#f5f1e8;max-width:960px;margin:auto;padding:32px 18px}
+h1{font:42px Georgia;margin:0}h2{font:24px Georgia;margin:0 0 12px}section{background:#fffdf8;padding:20px;margin:16px 0;border:1px solid #ccc4b6;border-radius:10px}
+button,a{color:#254e48}button{background:#eaf1e8;border:1px solid #a3b5aa;padding:8px 12px;border-radius:5px;cursor:pointer;font:inherit}button:disabled{opacity:.5}
+input,textarea,select{padding:8px;max-width:100%;font:inherit}textarea,pre{width:100%;font:13px/1.5 monospace;overflow:auto}textarea{height:220px}pre{white-space:pre-wrap;overflow-wrap:anywhere}
+label{display:block;margin:8px 0}p{margin:8px 0}#status{position:sticky;bottom:0;background:#213f3b;color:white;padding:12px;border-radius:6px}#result:empty{display:none}
+#prompt{min-height:110px;height:150px}#analysis-result{margin-top:16px;padding-top:12px;border-top:1px solid #ccc4b6}
+#analysis-result h3{font-size:1rem;margin:12px 0 4px}.muted{color:#516061;font-size:.92rem}
+.swatches,.objects{display:flex;gap:6px;flex-wrap:wrap;padding:0;list-style:none}
+.swatches li,.objects li{display:inline-flex;align-items:center;gap:6px;background:#f2eee4;padding:4px 8px;border-radius:4px;font-size:.88rem}
+.swatches i{width:16px;height:16px;border:1px solid #8a867c;border-radius:4px}
+button#analyze{color:#fff;background:#244c88;border-color:#244c88}
+.analysis-actions{display:flex;flex-wrap:wrap;gap:8px}details{margin-top:10px}summary{cursor:pointer}
+.primary{background:#244c88;border-color:#244c88;color:white}
+.world-workspace{border-top:4px solid #244c88;padding-top:16px}
+.world-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px}
+.world-links a[hidden]{display:none}
+:focus-visible{outline:2px solid #244c88;outline-offset:3px}
+</style>
+<h1>Paint Atlas</h1><p>Bàn thử backend · <a href="/docs">Swagger API</a> · <a href="/health">Trạng thái</a></p>
+<section class="world-workspace" aria-labelledby="world-studio">
+  <h2 id="world-studio">Dựng thế giới từ tranh</h2>
+  <label for="recipe-file">Nhập tệp từ ChatGPT</label>
+  <input id="recipe-file" type="file" accept=".json,application/json">
+  <p id="recipe-name" class="muted" aria-live="polite"></p>
+  <div class="analysis-actions">
+    <button id="recipe-render" type="button" class="primary" disabled>Dựng cảnh</button>
+    <button id="recipe-sample" type="button">Dùng tệp mẫu</button>
+    <button id="recipe-attach" type="button" disabled>Thêm vào bản nháp</button>
+  </div>
+  <div class="world-links">
+    <a href="/worlds/demo" target="_blank" rel="noopener">Chơi cảnh mẫu</a>
+    <a href="/worlds/guide">Tải hướng dẫn cho ChatGPT</a>
+    <a href="/worlds/schema.json" target="_blank" rel="noopener">Schema JSON</a>
+    <a id="preview-world" target="_blank" rel="noopener" hidden>Mở cảnh vừa dựng</a>
+    <a id="download-world" download="Paint-Atlas-World.html" hidden>Tải HTML chơi ngoại tuyến</a>
+  </div>
+</section>
+<section><h2>Cuốn sách</h2><label>Tên sách <input id="title" value="Đường qua hai bức tranh"></label>
+<button id="create">Tạo sách mẫu hai thế giới</button><button id="reload">Tải bản đã lưu</button><p id="identity"></p></section>
+<section><h2>Bản nháp</h2><p>Bạn có thể sửa tên, tọa độ và tuyến nối trong JSON. Mẫu ban đầu nối cầu đá ở cảnh đêm với đường vào đồng hoa.</p>
+<textarea id="editor" aria-label="JSON bản nháp" spellcheck="false"></textarea>
+<label>Thế giới mới <input id="newtitle" placeholder="Bến sông"> <select id="template"><option value="riverside">Ven sông</option><option value="meadow">Đồng hoa</option><option value="night-ride">Đêm sao</option></select> <button id="addworld">Thêm thế giới</button></label>
+<label>Tuyến từ <select id="source"></select> đến <select id="target"></select> <button id="link">Gắn lối ra với điểm đến</button></label>
+<label>Thêm tranh vào thế giới <select id="world"></select> <input type="file" id="image" accept="image/png,image/jpeg,image/webp"></label>
+<button id="upload">Gắn tranh vào bản nháp</button> <button id="save">Lưu bản nháp</button></section>
+<section aria-labelledby="analysis-title">
+  <h2 id="analysis-title">Phân tích tranh và prompt</h2>
+  <p class="muted">Kết quả dùng cho thế giới bạn đang chọn trong Bản nháp.</p>
+  <label for="prompt">Prompt dựng cảnh</label>
+  <textarea id="prompt" maxlength="12000" spellcheck="false" placeholder="Mô tả phong cách, vật thể và cách đi trong cảnh."></textarea>
+  <label><input id="vision" type="checkbox"> Nhận dạng ảnh qua OpenAI</label>
+  <p class="muted">Khi bật, máy chủ gửi ảnh đã chọn để phân tích. Cần khóa API cấu hình trên máy chủ.</p>
+  <div class="analysis-actions">
+    <button id="analyze">Phân tích đầu vào</button>
+    <button id="example">Dùng prompt The Night Ride</button>
+    <button id="apply-analysis" disabled>Gắn kết quả vào bản nháp</button>
+  </div>
+  <div id="analysis-result" hidden>
+    <p id="analysis-world"></p>
+    <div id="analysis-summary"></div>
+    <details><summary>Xem JSON phân tích</summary><pre id="analysis-json"></pre></details>
+  </div>
+</section>
+<section><h2>Thử hành trình</h2><button id="publish">Xuất bản bản đã lưu</button> <button id="cross">Thử lối ra đầu tiên</button>
+<p><a id="public"></a></p><div id="played-worlds" class="world-links"></div><pre id="result"></pre></section><p role="status" id="status">Mở cảnh mẫu hoặc nhập tệp để bắt đầu.</p>
+<script>
+const el=id=>document.getElementById(id);
+const anchor=(id,kind,position)=>({id,kind,position,yaw:0});
+const point=(world,anchor)=>({world,anchor});
+function sample(title){return {title,start:point('night','village'),worlds:[
+  {id:'night',title:'The Night Ride',template:'night-ride',anchors:[anchor('village','entry',[0,0,0]),anchor('bridge','exit',[12,0,4]),anchor('forest','exit',[-8,0,5])]},
+  {id:'flowers',title:'Đồng hoa bình minh',template:'meadow',anchors:[anchor('path','entry',[2,0,-6])]}
+],links:[{source:point('night','bridge'),target:point('flowers','path')}]}}
+let state=JSON.parse(sessionStorage.getItem('atlas-book')||'null'),rev=null,pending=null;
+let recipe=null, previewURL=null;
+async function api(path,method='GET',body,raw=false){
+  const headers={}; if(state) headers.Authorization='Bearer '+state.token;
+  if(body&&!raw)headers['Content-Type']='application/json';
+  const res=await fetch(path,{method,headers,body:body?(raw?body:JSON.stringify(body)):undefined});
+  const data=await res.json();if(!res.ok)throw Error(JSON.stringify(data.detail));return data;
+}
+const path=()=>'/books/'+state.id;
+function worlds(book){
+  const selected=el('world').value;
+  el('world').replaceChildren(...book.worlds.map(w=>new Option(w.title,w.id)));
+  if(book.worlds.some(w=>w.id===selected))el('world').value=selected;
+  for(const [field,kind] of [['source','exit'],['target','entry']]){
+    const choices=book.worlds.flatMap(w=>w.anchors.filter(a=>a.kind===kind||a.kind==='both')
+      .map(a=>new Option(w.title+' / '+a.id,w.id+'/'+a.id)));
+    el(field).replaceChildren(...choices);
+  }
+}
+function show(data){rev=data.revision;el('editor').value=JSON.stringify(data.book,null,2);worlds(data.book);
+  el('identity').textContent='Sách '+state.id+' · bản nháp '+rev}
+async function reload(){
+  const data=await api(path());
+  pending=null;
+  el('apply-analysis').disabled=true;
+  show(data);
+  showAttachedAnalysis(data.book);
+  return 'Đã tải bản nháp đã lưu.';
+}
+async function save(){show(await api(path(),'PUT',{revision:rev,book:JSON.parse(el('editor').value)}));return 'Đã lưu bản nháp.'}
+function action(id,fn,requiresBook=true){el(id).onclick=async()=>{const buttons=[...document.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);
+  try{if(requiresBook&&!state)throw Error('Tạo sách trước.');el('status').textContent=await fn()}
+  catch(e){el('status').textContent=e.message}finally{
+    buttons.forEach(b=>b.disabled=false);
+    el('apply-analysis').disabled=!pending;
+    el('recipe-render').disabled=!recipe;
+    el('recipe-attach').disabled=!recipe;
+  }}}
+function openBook(data){
+  state={id:data.id,token:data.edit_token};sessionStorage.setItem('atlas-book',JSON.stringify(state));
+  pending=null;el('analysis-result').hidden=true;
+  el('public').removeAttribute('href');el('public').textContent='';el('result').textContent='';
+  el('played-worlds').replaceChildren();
+}
+action('create',async()=>{const data=await api('/books','POST',{title:el('title').value});
+  openBook(data);
+  show({...data,book:sample(data.book.title)});return save()},false);
+function setRecipe(value){
+  if(previewURL)URL.revokeObjectURL(previewURL);
+  previewURL=null;
+  el('preview-world').hidden=true;
+  el('download-world').hidden=true;
+  recipe=value;
+  el('recipe-name').textContent=recipe?.title||'';
+  el('recipe-render').disabled=!recipe;
+  el('recipe-attach').disabled=!recipe;
+}
+el('recipe-file').addEventListener('change',async()=>{
+  setRecipe(null);
+  const file=el('recipe-file').files[0];
+  if(!file)return;
+  try{
+    if(file.size>65536)throw Error('Tệp JSON tối đa 64 KiB.');
+    const value=JSON.parse(await file.text());
+    if(el('recipe-file').files[0]!==file)return;
+    if(!value||typeof value.title!=='string'||value.version!==1)throw Error('Chọn tệp mô tả thế giới Paint Atlas phiên bản 1.');
+    setRecipe(value);
+    el('status').textContent='Đã đọc tệp. Chọn Dựng cảnh hoặc Thêm vào bản nháp.';
+  }catch(error){el('status').textContent=error.message}
+});
+action('recipe-sample',async()=>{
+  const value=await api('/examples/river-moon.json');
+  el('recipe-file').value='';
+  setRecipe(value);
+  return 'Đã nạp tệp mẫu Bến sông dưới trăng.';
+},false);
+async function renderRecipe(value){
+  const res=await fetch('/worlds/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(value)});
+  if(!res.ok){
+    const {detail}=await res.json();
+    const problems=Array.isArray(detail)?detail.map(item=>item.loc.slice(1).join('.')+' · '+item.msg).join('\n'):detail;
+    throw Error(problems||'Không thể dựng cảnh.');
+  }
+  return res.blob();
+}
+action('recipe-render',async()=>{
+  const value=recipe;
+  const html=await renderRecipe(value);
+  if(value!==recipe)throw Error('Tệp đã thay đổi. Chọn Dựng cảnh lần nữa.');
+  if(previewURL)URL.revokeObjectURL(previewURL);
+  previewURL=URL.createObjectURL(html);
+  for(const id of ['preview-world','download-world']){
+    el(id).href=previewURL;
+    el(id).hidden=false;
+  }
+  el('preview-world').focus();
+  return 'Đã dựng cảnh. Chọn Mở cảnh vừa dựng để cưỡi ngựa.';
+},false);
+action('recipe-attach',async()=>{
+  const value=recipe;
+  // Validate the recipe before a new book is created.
+  if(!state){
+    await renderRecipe(value);
+    const data=await api('/books','POST',{title:value.title});
+    openBook(data);
+    show(data);
+  }
+  const book=JSON.parse(el('editor').value);
+  const id='w-'+crypto.randomUUID();
+  book.worlds.push({id,title:value.title,template:'painted',recipe:value,anchors:[
+    anchor('entry','entry',[-2,0,10]),anchor('trail','exit',[10,0,-30])]});
+  if(!book.start)book.start=point(id,'entry');
+  const data=await api(path(),'PUT',{revision:rev,book});
+  show(data);
+  el('world').value=id;
+  pending=null;
+  showAttachedAnalysis(data.book);
+  return 'Đã thêm và lưu thế giới '+value.title+'.';
+},false);
+action('addworld',async()=>{
+  const title=el('newtitle').value.trim();if(!title)throw Error('Nhập tên thế giới.');
+  const book=JSON.parse(el('editor').value);
+  const id='w-'+crypto.randomUUID();
+  book.worlds.push({id,title,template:el('template').value,anchors:[
+    anchor('path','both',[0,0,0]),anchor('gate','exit',[6,0,0])]});
+  show({revision:rev,book});el('world').value=id;el('target').value=id+'/path';
+  return 'Đã thêm thế giới. Chọn tuyến nối rồi lưu bản nháp.'});
+action('link',async()=>{
+  const book=JSON.parse(el('editor').value);
+  function selected(field){const value=el(field).value;if(!value)throw Error('Thiếu điểm vào hoặc ra.');
+    return point(...value.split('/'))}
+  const source=selected('source'),target=selected('target');
+  const i=book.links.findIndex(l=>l.source.world===source.world&&l.source.anchor===source.anchor);
+  if(i<0)book.links.push({source,target});else book.links[i]={source,target};
+  show({revision:rev,book});return 'Đã gắn tuyến. Bấm Lưu bản nháp.'});
+action('reload',reload);action('save',save);
+action('upload',async()=>{const file=el('image').files[0];if(!file)throw Error('Chọn tệp tranh.');
+  const book=JSON.parse(el('editor').value);const w=book.worlds.find(w=>w.id===el('world').value);
+  if(!w)throw Error('Chọn thế giới hợp lệ.');const result=await api(path()+'/images','POST',file,true);
+  if(w.analysis?.artwork)delete w.analysis;
+  w.artwork=result.artwork;pending=null;el('analysis-result').hidden=true;
+  show({revision:rev,book});return 'Đã gắn tranh. Bạn có thể phân tích ảnh hoặc lưu bản nháp.'});
+const styles={
+  oil_impasto:'Sơn dầu đắp dày (impasto)',oil_paint:'Sơn dầu',watercolor:'Màu nước',
+  ink:'Mực',paper_cut:'Giấy cắt',pixel_art:'Pixel art',flat_illustration:'Minh họa phẳng',
+  photographic:'Phong cách ảnh chụp',other:'Phong cách khác',unknown:'Chưa xác định'
+};
+function analysisSummary(value,title){
+  const summary=el('analysis-summary');
+  summary.replaceChildren();
+  function add(tag,text){
+    const node=document.createElement(tag);
+    node.textContent=text;
+    summary.append(node);
+    return node;
+  }
+  function list(items,cls,format){
+    if(!items.length)return;
+    const ul=add('ul','');
+    ul.className=cls;
+    for(const item of items){
+      const li=document.createElement('li');
+      format(li,item);
+      ul.append(li);
+    }
+  }
+  if(value.pixels){
+    add('h3','Bảng màu đo từ ảnh');
+    list(value.pixels.palette,'swatches',(li,color)=>{
+      const swatch=document.createElement('i');
+      swatch.style.backgroundColor=color.hex;
+      li.append(swatch,color.hex+' · '+Math.round(color.share*100)+'%');
+    });
+  }
+  if(value.recognition){
+    const {style,objects,lighting,composition}=value.recognition.observation;
+    add('h3','Nhận dạng từ ảnh · '+styles[style.family]);
+    add('p',style.description);
+    if(lighting)add('p',lighting);
+    if(composition)add('p',composition);
+    list(objects,'objects',(li,object)=>{li.textContent=object.label;li.title=object.description});
+  }else if(value.pixels){
+    add('p','Chưa chạy nhận dạng phong cách và vật thể từ ảnh.').className='muted';
+  }
+  if(value.brief){
+    const {art,object_mentions:objects,rendering}=value.brief;
+    add('h3','Yêu cầu trong prompt · '+styles[art.family]);
+    const engine=[rendering.api?.toUpperCase(),rendering.stroke_geometry==='instanced_quad'?'Nét cọ instanced quad':null,
+      rendering.shader?.toUpperCase()].filter(Boolean);
+    if(engine.length)add('p',engine.join(' · '));
+    list(objects,'objects',(li,object)=>{li.textContent=object.label;li.title=object.context.join(' ')});
+  }
+  el('analysis-world').textContent=title;
+  el('analysis-json').textContent=JSON.stringify(value,null,2);
+  el('analysis-result').hidden=false;
+}
+function showAttachedAnalysis(book){
+  const world=book.worlds.find(w=>w.id===el('world').value);
+  if(world?.analysis)analysisSummary(world.analysis,world.title);
+  else el('analysis-result').hidden=true;
+}
+action('example',async()=>{
+  const res=await fetch('/examples/night-ride.txt');
+  if(!res.ok)throw Error('Không tải được prompt mẫu.');
+  el('prompt').value=await res.text();
+  pending=null;
+  return 'Đã điền prompt The Night Ride.';
+},false);
+action('analyze',async()=>{
+  const book=JSON.parse(el('editor').value);
+  const world=book.worlds.find(w=>w.id===el('world').value);
+  if(!world)throw Error('Chọn thế giới để phân tích.');
+  const input={artwork:world.artwork??null,prompt:el('prompt').value,vision:el('vision').checked};
+  pending=null;
+  el('analysis-result').hidden=true;
+  const analysis=await api(path()+'/analyze','POST',input);
+  pending={world:world.id,input,analysis};
+  analysisSummary(analysis,world.title);
+  return 'Đã phân tích. Xem kết quả rồi gắn vào bản nháp nếu phù hợp.';
+});
+action('apply-analysis',async()=>{
+  const book=JSON.parse(el('editor').value);
+  const world=book.worlds.find(w=>w.id===el('world').value);
+  if(!world||!pending||world.id!==pending.world||(world.artwork??null)!==pending.input.artwork||
+      pending.input.prompt!==el('prompt').value||pending.input.vision!==el('vision').checked){
+    throw Error('Đầu vào đã thay đổi. Bấm Phân tích đầu vào để cập nhật.');
+  }
+  world.analysis=pending.analysis;
+  show({revision:rev,book});
+  return 'Đã gắn kết quả. Bấm Lưu bản nháp ở phía trên.';
+});
+action('publish',async()=>{const p=await api(path()+'/publish','POST',{revision:rev});
+  el('public').href=p.url;el('public').textContent='Mở dữ liệu hành trình đã xuất bản';
+  const published=await api(p.url);
+  el('played-worlds').replaceChildren();
+  for(const world of published.book.worlds){
+    const view=published.views?.[world.id];
+    if(view){
+      const link=document.createElement('a');
+      link.textContent='Chơi '+world.title;
+      link.href=view;
+      link.target='_blank';
+      link.rel='noopener';
+      el('played-worlds').append(link);
+    }
+  }
+  return 'Đã xuất bản phiên bản '+p.revision});
+action('cross',async()=>{const p='/play/'+state.id;const data=await api(p);const link=data.book.links[0];
+  if(!link)throw Error('Cuốn sách chưa có tuyến.');const s=link.source;
+  el('result').textContent=JSON.stringify(await api(p+'/travel/'+s.world+'/'+s.anchor),null,2);
+  return 'Đã đi qua '+s.world+'/'+s.anchor+'. Tọa độ đến hiển thị phía trên.'});
+el('editor').onchange=()=>{try{worlds(JSON.parse(el('editor').value))}catch{}};
+el('world').onchange=()=>{
+  pending=null;
+  el('apply-analysis').disabled=true;
+  try{showAttachedAnalysis(JSON.parse(el('editor').value))}catch{}
+};
+if(state)reload().catch(e=>el('status').textContent=e.message);
+</script></html>

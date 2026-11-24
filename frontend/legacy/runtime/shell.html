@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101b30">
+<title>Paint Atlas</title>
+<style>
+:root {
+  color-scheme: dark;
+  --ivory: #f4ead7;
+  --gold: #f4cf83;
+  --dim: #c8c5bc;
+  --line: #ece5c94a;
+  --glass: #101926bc;
+  font-family: system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; overflow: hidden; background: #101b30; color: var(--ivory); }
+button { color: inherit; font: inherit; cursor: pointer; }
+button:focus-visible, dialog:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+canvas { display: block; width: 100vw; height: 100dvh; touch-action: none; cursor: grab; }
+canvas:active { cursor: grabbing; }
+.vignette {
+  position: fixed; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, #080f21af, #080f2134 13%, transparent 24%, transparent 72%, #080f2128 86%, #080f21bc),
+    radial-gradient(ellipse at 50% 47%, transparent 50%, #080f213d 100%);
+}
+.top {
+  position: fixed; z-index: 2; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;
+  inset: max(26px, env(safe-area-inset-top)) max(32px, env(safe-area-inset-right)) auto max(32px, env(safe-area-inset-left));
+  pointer-events: none;
+}
+.title { text-shadow: 0 2px 14px #060c1a, 0 1px 3px #060c1a; }
+.title h1 { margin: 0; font: 400 clamp(36px, 4.8vw, 68px)/.98 Georgia, 'Times New Roman', serif; letter-spacing: -.057em; }
+.title h1 { max-width: 67vw; overflow-wrap: anywhere; line-height: 1.05; }
+.chip { white-space: nowrap; }
+.place {
+  display: flex; align-items: center; gap: 10px; margin: 15px 0 0 2px;
+  color: #f2d29c; font-size: 12px; font-weight: 650; letter-spacing: .19em; text-transform: uppercase;
+}
+.place::before { content: ''; width: 25px; height: 1px; background: currentColor; opacity: .75; }
+.actions { display: flex; gap: 8px; pointer-events: auto; }
+.chip {
+  min-height: 42px; padding: 0 13px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--glass); box-shadow: 0 2px 12px #040b1670;
+  font-size: 13px; font-weight: 560; white-space: nowrap; transition: background .18s, border-color .18s, color .18s;
+}
+.chip:hover { background: #1f2b3be8; border-color: #f4ead793; }
+.chip[aria-pressed="true"] { color: #ffdfa1; border-color: #ead393a6; background: #302819d9; }
+.chip.icon-only { min-width: 42px; padding: 0; font: italic 19px Georgia, serif; }
+.guide-mark { width: 7px; height: 7px; border: 1px solid currentColor; transform: rotate(45deg); }
+.chip[aria-pressed="true"] .guide-mark { background: var(--gold); box-shadow: 0 0 9px #f1b96691; }
+.tour-mark { width: 15px; height: 10px; border: 1px solid currentColor; border-radius: 50%; transform: rotate(-24deg); }
+.bottom {
+  position: fixed; z-index: 2; display: flex; align-items: end; justify-content: space-between; gap: 12px;
+  inset: auto max(33px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(33px, env(safe-area-inset-left));
+  pointer-events: none;
+}
+.status { text-shadow: 0 1px 6px #070d14, 0 2px 9px #070d14; }
+.status p { margin: 0; }
+.status .mode { color: var(--gold); font-size: 12px; letter-spacing: .135em; font-weight: 700; text-transform: uppercase; }
+.status .hint { margin-top: 4px; font: italic 19px Georgia, serif; }
+.keys { display: flex; align-items: center; gap: 15px; color: var(--ivory); font-size: 12px; }
+.keys span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+kbd {
+  display: inline-flex; justify-content: center; align-items: center; border: 1px solid var(--line); border-radius: 4px;
+  min-height: 22px; min-width: 22px; padding: 1px 5px; background: #0d1626be; color: #ffedcd; font: 600 11px system-ui, sans-serif;
+}
+.touch { display: none; position: fixed; z-index: 3; touch-action: none; user-select: none; -webkit-user-select: none; }
+#joystick {
+  --knob-x: 0px; --knob-y: 0px;
+  bottom: max(25px, env(safe-area-inset-bottom)); left: max(21px, env(safe-area-inset-left)); width: 105px; height: 105px;
+  border: 1px solid #f3deb777; border-radius: 50%; background: #111a2c9e; box-shadow: 0 3px 14px #070d1b70;
+}
+#joystick::before { content: ''; position: absolute; inset: 11px; border-radius: 50%; border: 1px dashed #f3deb754; }
+#knob {
+  position: absolute; width: 44px; height: 44px; top: 30px; left: 30px; border-radius: 50%;
+  background: #e4c68d35; border: 1px solid #f3deb7bd; transform: translate(var(--knob-x), var(--knob-y)); pointer-events: none;
+}
+#jump {
+  right: max(23px, env(safe-area-inset-right)); bottom: max(30px, env(safe-area-inset-bottom)); width: 65px; height: 65px;
+  border: 1px solid #f3deb7a8; border-radius: 50%; background: #211c22cc; color: var(--gold); font-weight: 600;
+  box-shadow: 0 3px 14px #070d1b70;
+}
+#jump:active { background: #7a532c; }
+body.mobile .touch { display: block; }
+body.mobile .keys { display: none; }
+body.mobile .bottom { bottom: 144px; inset-inline: max(22px, env(safe-area-inset-left)); }
+body.mobile .top { inset-inline: max(17px, env(safe-area-inset-left)); top: max(20px, env(safe-area-inset-top)); gap: 12px; }
+body.mobile .title h1 { font-size: clamp(30px, 7.9vw, 48px); }
+body.mobile .place { font-size: 10px; letter-spacing: .12em; margin-top: 9px; }
+body.mobile .actions { gap: 5px; }
+body.mobile .chip { min-height: 40px; padding: 0 9px; font-size: 12px; }
+body.mobile .chip.icon-only { min-width: 38px; padding: 0; }
+body.mobile #tour .desktop-copy, body.mobile #guide .desktop-copy { display: none; }
+body:not(.mobile) .mobile-copy { display: none; }
+#loading {
+  position: fixed; z-index: 5; inset: 0; display: grid; place-items: center; background: #101b30;
+  transition: opacity .55s ease, visibility .55s ease; text-align: center;
+}
+#loading.finished { opacity: 0; visibility: hidden; pointer-events: none; }
+#loading p { margin: 0 16px; font: italic clamp(20px, 3vw, 31px) Georgia, serif; }
+#loading .loading-diamond { display: block; width: 12px; height: 12px; transform: rotate(45deg); margin: 0 auto 18px; background: var(--gold); box-shadow: 0 0 28px #ffd69486; }
+dialog {
+  max-width: min(440px, calc(100vw - 30px)); padding: 24px; border: 1px solid var(--line); border-radius: 12px;
+  background: #121d31; color: var(--ivory); box-shadow: 0 20px 90px #050a16bd;
+}
+dialog::backdrop { background: #050b15b3; }
+dialog h2 { margin: 0 0 14px; font: 400 30px Georgia, serif; }
+dialog p { color: var(--dim); font-size: 14px; line-height: 1.5; }
+dialog dl { display: grid; grid-template-columns: 1fr 1.45fr; gap: 8px 13px; margin: 18px 0; font-size: 14px; }
+dialog dd { margin: 0; color: var(--gold); }
+@media (max-width: 650px) {
+  .top { flex-wrap: wrap; gap: 12px; }
+  .bottom .keys span:nth-child(n+4) { display: none; }
+}
+@media (max-width: 380px) {
+  body.mobile .top { flex-wrap: wrap; }
+  body.mobile .actions .tour-mark, body.mobile .actions .guide-mark { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<canvas id="view" tabindex="-1" aria-label="Thế giới 3D sơn dầu"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<header class="top">
+  <div class="title">
+    <h1 id="world-title">Paint Atlas</h1>
+    <p id="place" class="place">Lối vào</p>
+  </div>
+  <nav class="actions" aria-label="Điều khiển chuyến đi">
+    <button id="guide" class="chip" aria-label="Theo đường" aria-pressed="true"><i class="guide-mark" aria-hidden="true"></i><span class="desktop-copy">Theo đường</span><span class="mobile-copy">Đường</span></button>
+    <button id="tour" class="chip" aria-label="Tham quan" aria-pressed="false"><i class="tour-mark" aria-hidden="true"></i><span class="desktop-copy">Tham quan</span><span class="mobile-copy">Xem cảnh</span></button>
+    <button id="help" class="chip icon-only" aria-label="Điều khiển" title="Điều khiển">?</button>
+  </nav>
+</header>
+<footer class="bottom">
+  <div class="status" aria-live="polite"><p id="mode" class="mode">Đang đi theo đường mòn</p><p id="hint" class="hint">Dùng WASD để tự cưỡi</p></div>
+  <div class="keys" aria-label="Phím và chuột">
+    <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Di chuyển</span>
+    <span><kbd>Shift</kbd> Tăng tốc</span>
+    <span><kbd>Space</kbd> Nhảy</span>
+    <span><kbd>Drag</kbd> Xoay nhìn</span>
+    <span><kbd>Scroll</kbd> Thu phóng</span>
+  </div>
+</footer>
+<div id="joystick" class="touch" role="group" aria-label="Cần ảo để di chuyển"><div id="knob"></div></div>
+<button id="jump" class="touch" aria-label="Nhảy">Nhảy</button>
+<dialog id="controls" aria-labelledby="controls-title">
+  <h2 id="controls-title">Điều khiển</h2>
+  <dl>
+    <dt>Di chuyển</dt><dd>WASD hoặc cần ảo</dd>
+    <dt>Tăng tốc</dt><dd>Giữ Shift</dd>
+    <dt>Nhảy</dt><dd>Space hoặc nút Nhảy</dd>
+    <dt>Xoay góc nhìn</dt><dd>Kéo trên cảnh</dd>
+    <dt>Thu phóng</dt><dd>Cuộn hoặc chụm màn hình</dd>
+  </dl>
+  <p>Chế độ Theo đường tự cưỡi và nhảy qua chướng ngại. Dùng phím di chuyển hoặc cần ảo để tự cưỡi.</p>
+  <form method="dialog"><button class="chip">Quay lại cảnh</button></form>
+</dialog>
+<div id="loading" role="status"><p><span class="loading-diamond" aria-hidden="true"></span>Đang dựng thế giới…</p></div>
+<!-- APPLICATION -->
+</body>
+</html>

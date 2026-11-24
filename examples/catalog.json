@@ -1,0 +1,59 @@
+[
+  {
+    "key": "starry",
+    "title": "The Starry Ride",
+    "description": "Một chuyến cưỡi ngựa qua làng dưới bầu trời đầy sao. Những vòng xoáy xanh cobalt gặp ánh đèn hổ phách trên đường hoa hướng dương.",
+    "world": "Đồng hoa hướng dương, làng, cối xay, ngựa, cầu và thác nước.",
+    "style": "Nét sơn dầu ngắn, dày, chạy thành vòng xoáy. Xanh cobalt, vàng cam và ánh trăng lạnh.",
+    "palette": [
+      "#142141",
+      "#315388",
+      "#7399a4",
+      "#e5ad57",
+      "#e9d7b2"
+    ],
+    "seed": 8131,
+    "subject": false,
+    "reference": "landscape.webp",
+    "source": "starry.ts",
+    "kind": "Phong cảnh"
+  },
+  {
+    "key": "hoian",
+    "title": "Đêm bên sông Hoài",
+    "description": "Những mái ngói vàng, thuyền thúng và bóng đèn lồng trôi trên màu xanh thẫm của sông Hoài.",
+    "world": "Một phố cổ Hội An bên sông Hoài, có dãy nhà gỗ, cầu, thuyền thúng và đèn lồng.",
+    "style": "Nền xanh cổ vịt đậm, nét cọ ngắn theo khối, ánh vàng mật và điểm đỏ son.",
+    "palette": [
+      "#103332",
+      "#32675e",
+      "#aa352a",
+      "#edaa59",
+      "#f4dbab"
+    ],
+    "seed": 6207,
+    "subject": false,
+    "reference": "portrait.webp",
+    "source": "hoian.ts",
+    "kind": "Phong cảnh"
+  },
+  {
+    "key": "portrait",
+    "title": "Người làm đèn",
+    "description": "Cô gái áo dài đỏ, cài hoa trắng và cầm đèn lụa bên bờ sông. Đi quanh nhân vật để xem các nét cọ ôm lấy hình khối.",
+    "world": "Phố cổ Hội An, cầu gỗ, thuyền thúng. Đặt người làm đèn gần đầu cầu.",
+    "style": "Sơn dầu trên nền xanh cổ vịt, đỏ son và vàng nghệ. Nét ngắn, có gờ sơn, đổi hướng theo bề mặt.",
+    "palette": [
+      "#103332",
+      "#32675e",
+      "#aa352a",
+      "#edaa59",
+      "#f4dbab"
+    ],
+    "seed": 6207,
+    "subject": true,
+    "reference": "portrait.webp",
+    "source": "hoian.ts",
+    "kind": "Chủ thể 3D"
+  }
+]
